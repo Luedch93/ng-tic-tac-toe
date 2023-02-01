@@ -1,0 +1,112 @@
+$cross-color: #2ecc71;
+$circle-color: #8e44ad;
+$cell-height: 100px;
+$cell-opacity: 0.9;
+
+@import "breakpoints";
+
+
+.header {
+  &__title {
+    margin: 15px 0;
+    text-align: center;
+  }
+  &__turn {
+    margin: 15px 0;
+    &__symbol {
+      &--cross {
+        color: $cross-color;
+      }
+      &--circle {
+        color: $circle-color;
+      }
+    }
+  }
+  &__startBtn {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+}
+
+.board {
+  margin: 0 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: $cell-height;
+  &__button {
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid black;
+    text-align: center;
+    line-height: $cell-height;
+    color: white;
+    transition: background-color 0.5s;
+    background-color: lighten($color: #000000, $amount: 95);
+    &__circle {
+      background-color: rgba($color: $circle-color, $alpha: $cell-opacity);
+    }
+    &__cross {
+      background-color: rgba($color: $cross-color, $alpha: $cell-opacity);
+    }
+  }
+}
+
+// cells
+
+#cell_1 {
+  border-top: none;
+  border-left: none;
+}
+#cell_2 {
+  border-top: none;
+}
+#cell_3 {
+  border-top: none;
+  border-right: none;
+}
+
+#cell_4 {
+  border-left: none;
+}
+
+#cell_6 {
+  border-right: none;
+}
+
+#cell_7 {
+  border-bottom: none;
+  border-left: none;
+}
+
+#cell_8 {
+  border-bottom: none;
+}
+
+#cell_9 {
+  border-bottom: none;
+  border-right: none;
+}
+
+@include sm() {
+  .header {
+    &__startBtn {
+      max-width: 150px;
+    }
+  }
+  .board {
+    margin: 0 40px;
+  }
+}
+
+@include md() {
+  .board {
+    max-width: 500px;
+    margin: auto;
+  }
+}
